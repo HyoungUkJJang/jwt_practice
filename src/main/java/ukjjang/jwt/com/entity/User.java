@@ -2,8 +2,10 @@ package ukjjang.jwt.com.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.Set;
 
 @Getter
@@ -24,6 +26,9 @@ public class User {
     @Column(name = "username", length = 50, unique = true)
     private String username;
 
+    @Column(name = "password", length = 100)
+    private String password;
+
     @Column(name = "nickname", length = 50)
     private String nickname;
 
@@ -40,4 +45,6 @@ public class User {
     )
     private Set<Authority> authorites;
 
+    public User(String subject, String s, Collection<? extends GrantedAuthority> authorities) {
+    }
 }
